@@ -18,7 +18,19 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+}
+
+
 INSTALLED_APPS = [
+    'rest_framework',
     'jazzmin',
 
     'django.contrib.admin',
@@ -137,7 +149,8 @@ JAZZMIN_SETTINGS = {
         'products.Product': 'fa-solid fa-box',
         'products.UnitOfMeasurement': 'fa-solid fa-ruler-combined',
         'products.Entry': 'fa-solid fa-plus',
-        'products.Exit': 'fa-solid fa-minus'
+        'products.Exit': 'fa-solid fa-minus',
+        'admin.LogEntry': 'fas fa-history'
     },
 
     # Welcome text on the login screen
