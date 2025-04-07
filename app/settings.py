@@ -15,17 +15,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
-
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.SessionAuthentication', 
         'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',    
     ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',  # obriga autenticação
+        'rest_framework.permissions.DjangoModelPermissions' # obriga permissão de modelo
+    ]
 }
 
 
